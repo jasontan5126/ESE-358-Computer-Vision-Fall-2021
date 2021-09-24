@@ -1,16 +1,12 @@
 """
 Jason Tan
 112319102
-
 ESE 358 Project 2
 Python Template
 Stable version: python 3.8
-
 Don't touch the import statements. The skeleton code uses numpy and cv2.
-
 Most IDE's will ask to install these packages and will just work. Here are some links in case they don't
 and you need to install them manually. You might need to refresh your IDE after installing if you're still seeing errors
-
 cv2 package: https://pypi.org/project/opencv-python/
     For python 3 just run 'pip3 install opencv-python' from your terminal to install the package
     numpy package: https://numpy.org/install/
@@ -74,9 +70,7 @@ vertex1 : 1D array in (x,y) format to be displayed on screen
 vertex2 : 1D array in (x,y) format to be displayed on screen
 thickness : thickness of the line(default = 5)
 color : RGB tuple for the line to be drawn in (default = (255, 0, 0 ) ie white)
-
 @return : the matrix with the line drawn in it
-
 NOTE: order of vertex1 and vertex2 does not change the line drawn
 '''
 
@@ -152,7 +146,6 @@ def main():
      X(i,j), Y(i,j), and Z(i,j), should be computed,
      and that 3D point is
      associated with the brightness given by tmap(i,j).
-
      Find the unit vectors corresponding to u21=(V2-V1)/|(V2-V1)|
      and u41= (V4-V1)/|(v4-V1), and compute X(i,j), Y(i,j), and Z(i,j).
      Compute the unit vector u21 along (V2-V1) and
@@ -252,19 +245,24 @@ def main():
 
         # ???????????????????????????? - Solution here
 
+
+
         # Add texture map to one face.
         for i in range(r):
             for j in range(c):
                 p1 = [X[i, j], Y[i, j], Z[i, j]]
+                v = Map2Da(K, R, T, p1)
+                index = MapIndex(v, c0, r0, p);
+                ir = index[0];
+                jr = index[1];
 
                 # Find the row and column indices [ir,jr] in integers that give #the image position of point p1 in A.
                 # Use the same method as for the corners of the cube above.
 
                 # ????????????????????????? - Solution here
-                for ir in range(r):
-                    for jr in range(c):
-                        if ((ir >= 0) and (jr >= 0) and (ir < Rows) and (jr < Cols)):
-                            A[ir ,jr] = tmap[i, j, 0]
+
+                if ((ir >= 0) and (jr >= 0) and (ir < Rows) and (jr < Cols)):
+                    A[ir ,jr] = tmap[i, j, 0]
                 # In a general case, you may need to
                 # fill up gaps in A[ir,jr]
                 # through interpolation. But, in this project,
